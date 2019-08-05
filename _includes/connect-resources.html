@@ -1,7 +1,7 @@
 
 {% assign using_json = "False" %}
 {% assign current_connect = page.categories[0] | upcase %}
-{% assign connects = site.data.connects %}
+{% assign connects = site.data.connects.items %}
 {% for connect in connects %}
     {% if connect.id == current_connect %}
         {% if connect.using_json == "True" %}
