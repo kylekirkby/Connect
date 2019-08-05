@@ -5,7 +5,7 @@ layout: flow
 js-package: sponsor
 css-package: sponsor
 description: >-
-    Sponsor the biggest Arm Open Source Collaboration event. 
+    Sponsor the biggest Arm Open Source Collaboration event.
 jumbotron:
     carousel-images:
         - /assets/images/content/hkg18-sponsor-bg-1.jpg
@@ -18,7 +18,7 @@ jumbotron:
 featured-images:
     - /assets/images/content/hkg18-sponsor-thumb-1.jpg
     - /assets/images/content/yvr18-sponsor-thumb-1.jpg
-    - 
+    -
 flow:
     - row: container_row
       sections:
@@ -35,7 +35,7 @@ flow:
                     xs_items: 1
                     sm_items: 1
                     md_items: 1
-                    lg_items: 1 
+                    lg_items: 1
                     items:
                         - image: /assets/images/content/hkg18-sponsor-thumb-1.jpg
                           title: HGK18 Sponsor Photo
@@ -61,3 +61,4 @@ flow:
     - row: custom_include_row
       source: sponsorship_benefits.html
 ---
+efwefwef
