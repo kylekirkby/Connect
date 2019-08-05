@@ -1,6 +1,6 @@
 <div class="col-xs-12">
     <div class="owl-carousel owl-theme" id="keynote_slider">
-        {% for keynote in site.data.featured_keynotes %}
+        {% for keynote in site.data.featured_keynotes.items %}
             {% assign image_path = "" %}
             {% capture image_path %}{{keynote.speaker.image | remove_first: "/" }}{% endcapture %}
             {% capture full_path %}{{keynote.speaker.image}}{% endcapture %}
