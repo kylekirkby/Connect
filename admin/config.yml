@@ -8,14 +8,215 @@ backend:
     - admin
     - editor
 publish_mode: editorial_workflow
-media_folder: "assets/images"
+logo_url: https://www.linaro.org/assets/images/content/Linaro-Logo.svg
+site_url: {{site.url}}
+display_url: {{site.url}}
+show_preview_links: false
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+media_folder: "assets/images/content"
 collections:
+  - name: "connect_config"
+    label: "Connect Settings"
+    editor:
+      preview: false
+    files:
+      - label: "Sponsors"
+        name: "items"
+        file: "_data/sponsors.yml"
+        widget: list
+        fields:
+          - {label: "Company Name", name: "name", widget: string, required: true}
+          - {label: "Company Image", name: "string", widget: string, required: true}
+          - {label: "Company Url", name: "string", widget: string, required: true}
+          - {label: "Events", name: "", widget: relation, collection: "connects",required: true, displayFields: id, searchFields: id}
+  - name: "config"
+    label: "Website Settings"
+    editor:
+      preview: false
+    files:
+      - label: "Universal Navbar"
+        name: "universal-nav"
+        file: "_data/universal-nav.yml"
+        widget: list
+        fields:
+          - {label: Title, name: title, widget: string, required: true}
+          - {label: Url, name: url, widget: string, required: false}
+          - {label: Active, name: active, widget: boolean, required: false}
+          - label: Options
+            name: url
+            widget: list
+            required: false
+            fields:
+              - {label: "Title", name: title, widget: string, required: true}
+              - {label: "Url", name: url, widget: string, required: true}
+      - label: "Connects"
+        name: "Connects"
+        file: "_data/connects.yml"
+        widget: list
+        fields:
+          - {label: "Connect ID", name: id, widget: string, required: true}
+          - {label: "Placeholder Image", name: placeholder, widget: image, required: true}
+          - label: "Featured Images"
+            name: featured_images
+            widget: "image"
+            media_library:
+              config:
+                multiple: true
+          - {label: "Long Name", name: long-name, widget: string, required: true}
+          - {label: "Start Date", name: start-date, widget: datetime, required: true}
+          - {label: "End Date", name: end-date, widget: datetime, required: true}
+          - label: "Location"
+            name: location
+            widget: object
+            required: true
+            fields:
+              - label: Venue Name
+                name: venue
+                widget: string
+                required: true
+              - label: City
+                name: city
+                widget: string
+                required: true
+              - label: County/District
+                name: county
+                widget: string
+                required: false
+              - label: Country
+                name: country
+                widget: string
+                required: true
+          - label: Flickr Albums
+            name: flickr-albums
+            widget: list
+            requred: true
+            fields:
+              - label: Title
+                name: title
+                required: true
+                widget: string
+              - label: Url
+                name: url
+                required: true
+                widget: string
+      - label: "Footer"
+        name: "footer"
+        file: "_data/footer.yml"
+        fields:
+          - label: "Copyright Text"
+            name: copyright-text
+            widget: string
+            required: true
+            default: "Linaro Limited"
+          - label: "Linaro Branding"
+            name: "linaro-branding"
+            widget: boolean
+            required: true
+            default: true
+          - label: "Social Media Icons"
+            name: "social-media-icons"
+            widget: boolean
+            required: true
+            default: true
+          - label: "Company Links"
+            name: "company-links"
+            widget: list
+            required: true
+            fields:
+              - {label: Text, name: "name", widget: string, required: true}
+              - {label: Url, name: url, widget: string, required: true}
+          - label: "Middle Column"
+            name: "middle-column"
+            widget: object
+            required: true
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Latest Posts Enabled, name: latest-posts, widget: boolean, required: true, default: true}
+              - label: Items
+                name: items
+                widget: list
+                required: false
+                fields:
+                  - {label: Title, name: "name", widget: string, required: true}
+                  - {label: Url, name: "url", widget: string, required: true}
+          - label: "Last Column"
+            name: "last-column"
+            widget: object
+            required: true
+            fields:
+              - {label: Title, name: title, widget: string}
+              - label: Items
+                name: items
+                widget: list
+                required: true
+                fields:
+                  - {label: Title, name: "name", widget: string, required: true}
+                  - {label: Url, name: "url", widget: string, required: true}
+      - label: "Navigation"
+        name: "navigation"
+        file: "_data/nav.yml"
+        fields:
+          - label: "Universal Navbar"
+            name: universal-nav
+            widget: boolean
+            required: true
+            default: true
+          - label: "Navigation Search"
+            name: "search"
+            widget: object
+            fields:
+                - {label: Enabled, name: enabled, widget: boolean, required: true, default: true}
+                - {label: Label, name: label, widget: string, required: true, default: "Connect", hidden: true}
+          - label: "Navigation Brand"
+            name: "brand"
+            widget: object
+            fields:
+                - {label: Text, name: text, widget: string}
+                - label: Image
+                  name: image
+                  widget: object
+                  fields:
+                    - {label: Enabled, name: enabled, widget: boolean, default: true}
+                    - {label: Name, name: name, widget: string, default: true, required: false}
+                    - {label: SVG, name: svg, widget: boolean, default: true, required: false}
+                    - {label: Path, name: path, widget: image, default: true, required: false}
+                - {label: Url, name: url, widget: string, required: true, default: /}
+          - label: "Navigation Items"
+            name: "pages"
+            widget: "list"
+            fields:
+                - {label: Name, name: title, widget: string}
+                - {label: Link, name: url, widget: string, required: false}
+                - {label: Active Paths, name: active_paths, widget: string, required: false}
+                - label: Sub Options
+                  name: options
+                  required: false
+                  widget: 'list'
+                  fields:
+                    - {label: Name, name: text, widget: string}
+                    - {label: Link, name: url, widget: string}
+  - name: 'blog'
+    label: 'Posts'
+    folder: '_posts/'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
   - label: "Pages"
     name: "pages"
     folder: "_pages"
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
       - {label: "Permalink", name: "permalink", widget: "string"}
       - label: "Jumbotron"
         name: "jumbotron"
