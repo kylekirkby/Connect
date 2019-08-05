@@ -6,7 +6,7 @@ js-package: resources-blog
 ---
 {% assign using_json = "False" %}
 {% assign current_connect = page.event_code | upcase %}
-{% for connect in site.data.connects %}
+{% for connect in site.data.connects.items %}
     {% if connect.id == current_connect and connect.using_json == "True" %}
         {% assign using_json = "True" %}
     {% endif %}
@@ -37,7 +37,7 @@ alt: "{{ image_title }}"
                             {% assign image_title = post.title %}
                         {% endif %}
                         {% capture image_path %}assets/images/content/connect-logo.png{% endcapture %}
-                        {% for each in site.data.connects %}
+                        {% for each in site.data.connects.items %}
                             {% if each.id == page.event_code %}
                                 {% if each.placeholder %}
                                     {% capture image_path %}assets/images/content/{{each.placeholder}}{% endcapture %}

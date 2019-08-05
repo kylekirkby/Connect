@@ -6,7 +6,7 @@ js-package: resources-blog
 ---
 {% assign using_json = "False" %}
 {% assign current_connect = page.event_code | upcase %}
-{% for connect in site.data.connects %}
+{% for connect in site.data.connects.items %}
     {% if connect.id == current_connect and connect.using_json == "True" %}
         {% assign using_json = "True" %}
     {% endif %}
@@ -28,7 +28,7 @@ js-package: resources-blog
     {% endresponsive_image_block %}
                         {% else %}
                         {% capture image_path %}assets/images/content/connect-logo.png{% endcapture %}
-                        {% for each in site.data.connects %}
+                        {% for each in site.data.connects.items %}
                             {% if each.id == page.event_code %}
                                 {% if each.placeholder %}
                                     {% capture image_path %}assets/images/content/{{each.placeholder}}{% endcapture %}
@@ -73,7 +73,7 @@ js-package: resources-blog
                 for more resources; or subscribe to our <a href="https://www.youtube.com/user/LinaroOrg/videos">YouTube Channel</a>
                 to receive updates
                 when we release the Connect resources.
-            </p>    
+            </p>
         </div>
     {% endif %}
     </div>
