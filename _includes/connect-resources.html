@@ -4,6 +4,9 @@
 {% assign connects = site.data.connects %}
 {% for connect in connects %}
     {% if connect.id == current_connect %}
+        <script>
+            console.log("{{current_connect}} vs {{connect.id}}");
+        </script>
         {% if connect.using_json == "True" %}
             {% assign using_json = "True" %}
         {% else %}
@@ -13,6 +16,9 @@
 {% endfor %}
 <div class="col-sm-6 no-padding">
     <div class="video">
+        <script>
+            console.log("{{using_json}}");
+        </script>
         {% if using_json == "True" %}
             <div id="video-holder" class="using_json" event-id="{{current_connect}}" session-id="{{page.session_id}}">
                 <img id="video-skeleton" class="img-responsive lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
