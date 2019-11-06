@@ -11,9 +11,7 @@ company-links:
     - name: Legal
       url: /legal/
     - name: Contact
-      url: /contact/
-    - name: Press
-      url: /press/
+      url: https://www.linaro.org/contact/
 second-column: false
 third-column:
     title: Other Projects
