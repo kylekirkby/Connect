@@ -860,6 +860,9 @@ body {
         a {
           font-weight: 100;
           font-size: 18px;
+          @media (max-width: $screen-sm-min) {
+            line-height: 40px;
+          }
         }
       }
       .dropdown-menu {
