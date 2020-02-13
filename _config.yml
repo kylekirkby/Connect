@@ -1,18 +1,12 @@
 # Website title - used in the <title> tag of the <head> section of the website.
 title: Linaro Connect
-# Name of the site - used to identify the site for setting the active class in the universal nav
-name: Linaro Connect
-# GitHub branch for netlify CMS config.yml file.
-branch: develop
 # Description of the website used in the Meta Description.
 description: > # this means to ignore newlines until "baseurl:"
-  Linaro Connect San Diego 2019 (BKK19) will take place in San Diego California September 23-27, 2019
+  Every six months, over 300 of the world’s leading open source engineers working on Arm get together for a full week of engineering sessions and hacking at Linaro Connect.
+# This is the url that is used when your site is built for canonicals etc.
+url: "https://connect.linaro.org"
 # Destination of the Jekyll site upon build of site.
 destination: _site
-# Code of current connect.
-connect-code: SAN19
-connect-text: Linaro Connect San Diego 2019
-previous-connect-code: BKK19
 email: contact@linaro.org
 # Status of current Connect
 connect-status: post
@@ -39,12 +33,10 @@ search-label: Linaro
 # Disqus Comments settings.
 disqus: true
 disqus_shortname: 'linaroconnect'
-# This is the url that is used when your site is built for canonicals etc.
-url: "https://connect.linaro.org"
 # Make sure that Liquid errors stop the build
 liquid:
     error_mode: strict
-# Shema.org Setup -> used in the schema.html include.
+# Shema.org config schema.html include.
 schema:
     organisation:
         name: Linaro Connect
@@ -75,9 +67,6 @@ exclude:
   - README.md
   - vendor
 
-# Google Tag mangager site wide setting - for deployment of site to China.
-google-tag-manager: true
-
 # Social Configuration for the Jekyll SEO plugin.
 social:
   name: Linaro
@@ -88,6 +77,7 @@ social:
     - https://plus.google.com/+LinaroOnAir
     - https://github.com/Linaro
     - https://www.slideshare.net/linaroorg
+
 twitter:
     username: linaroorg
 
@@ -119,6 +109,12 @@ defaults:
       path: ""
     values:
       image: /assets/images/social-media-image.png
+
+# Jekyll Collections configuration
+collections:
+    authors:
+        output: false
+        permalink: /author/:name/
 
 # Gems that should be included in the Jekyll builld of this site.
 plugins:
@@ -181,11 +177,7 @@ pagination:
 autopages:
   enabled: false
 using_assets: true
-# Jekyll Collections configuration - Projects, Products and Documentation.
-collections:
-    authors:
-        output: false
-        permalink: /author/:name/
+
 # Jeykyll Responsive Image Configuration
 responsive_image:
   cache: false
