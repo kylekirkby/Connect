@@ -8,13 +8,10 @@ js-package: resources-search
 css-package: resources-landing-page
 jumbotron:
     animation: fade
-    carousel-images:
-        - /assets/images/content/yvr18.jpg
-        - /assets/images/content/hkg18.jpg
-        - /assets/images/content/sfo17.jpg
-redirect_from:
-    - /author/connect/
-    - /author/charbax/
+    background-image: /assets/images/content/linaro_connect_bud20_logo.svg
+    title-class: big-title
+    title: Resources
+    description: "Find resources from all of our previous Connect events here."
 ---
 <div class="row all-resources content-row" id="content-container">
     <div class="container">
@@ -93,16 +90,16 @@ redirect_from:
                                 </div>
                                 <div class="col-xs-12 col-sm-6 no-padding">
                                     <span class="resources-number">
-                                        
+
                                         {% assign counter = 0 %}
                                         {% for resource in site.categories[connect_id] %}
                                             {% if resource.youtube_video_url %}
                                                 {% assign counter = counter | plus:1 %}
                                             {% endif %}
                                         {% endfor %}
-                                        
+
                                         {{counter}}
-                                    
+
                                     </span>
                                 </div>
                             </div>
@@ -140,7 +137,7 @@ redirect_from:
                                     </ul>
                                 </div>
                             {% endif %}
-                            
+
                             {% if connect.location %}
                                 {% capture full-location %}{% endcapture %}
                                 {% if connect.location.venue %}
@@ -165,7 +162,7 @@ redirect_from:
                             <a href="/resources/{{connect_id}}/" class="btn btn-primary center-block">View {{connect.id}} Resources</a>
                         </div>
                     </div>
-                </div>  
+                </div>
             {% endfor %}
         </div>
     </div><!--Container END-->
