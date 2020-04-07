@@ -48,12 +48,19 @@ $(document).ajaxStop(function() {
         console.log(found_resource);
         // Updated the DOM elements once ajax request has finished.
         // Update the presentation DOM element
-        if (found_resource["s3_presentation_url"] !== "") {
+        if (
+          found_resource["s3_presentation_url"] !== "" ||
+          typeof found_resource["s3_presentation_url"][0] !== undefined
+        ) {
           var presentation_container = $(element).find(
             "#presentation_container:first"
           );
-          var presentation_el =
-            "<a href='" + found_resource["s3_presentation_url"] + "'>View</a>";
+          if (found_resource["s3_presentation_url"][0].length > 0) {
+            var presentation_url = found_resource["s3_presentation_url"][0];
+          } else {
+            var presentation_url = found_resource["s3_presentation_url"];
+          }
+          var presentation_el = "<a href='" + presentation_url + "'>View</a>";
           console.log("Presentation resource:");
           console.log(found_resource["s3_presentation_url"]);
           $(presentation_container).html(presentation_el);
